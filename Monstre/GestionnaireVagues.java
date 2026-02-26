@@ -30,4 +30,4 @@ public class GestionnaireVagues {
         return fileAttente.isEmpty();
     }
 }
-}
+
