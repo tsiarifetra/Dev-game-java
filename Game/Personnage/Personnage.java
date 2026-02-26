@@ -21,6 +21,9 @@ public class Personnage {
         this.level=level;
     }
 
+    public String getName(){
+        return name;
+    }
     public int getVie(){
         return vie;
     }
@@ -35,6 +38,9 @@ public class Personnage {
     }
 
     /////////////
+    public void setName(String nom){
+        name=nom;
+    }
     public void setVie(int V){
         vie=V;
     }

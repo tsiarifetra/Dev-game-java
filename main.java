@@ -1,6 +1,7 @@
 import Game.Personnage.Personnage;
+import Monstre.Boss1;
 import java.util.Scanner;
-
+import Monstre.Monstre;
 public class main {
     public static void main(String[] args) {
         Scanner s =new Scanner(System.in);
@@ -10,7 +11,8 @@ public class main {
         Personnage joueur=new Personnage(s.nextLine());
 
         joueur.AffichageStatistique();
-        joueur.Attaque(joueur);
+        
+        joueur.Attaque();
 
     }
     
