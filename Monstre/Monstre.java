@@ -1,6 +1,6 @@
 package Monstre;
 
-public abstract class Monstre {
+public class Monstre {
     protected String nom;
     protected String type;
     protected int pv;

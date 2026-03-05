@@ -1,69 +1,82 @@
 package Game.Personnage;
 
 public class Personnage {
-    String name;
-    int vie;
-    int xp;
-    int level;
-    int atk;
 
-    public Personnage(final String nom){
-        this.name=nom;
-        this.vie=50;
-        this.xp=0;
-        this.level=1;
-        this.atk=5;
-    }
-    public Personnage(final String nom,int V,int X,int level){
-        this.name=nom;
-        this.vie=V;
-        this.xp=X;
-        this.level=level;
+    protected String name;
+    protected int vie;
+    protected int xp;
+    protected int level;
+    protected int atk;
+
+    public Personnage(String name) {
+        this.name = name;
+        this.vie = 50;
+        this.xp = 0;
+        this.level = 1;
+        this.atk = 5;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public int getVie(){
+
+    public int getVie() {
         return vie;
     }
-    public int getXp(){
-        return xp;
-    }
-    public int getAtk(){
-        return atk;
-    }
-    public int getLevel(){
+
+    public int getLevel() {
         return level;
     }
 
-    /////////////
-    public void setName(String nom){
-        name=nom;
-    }
-    public void setVie(int V){
-        vie=V;
-    }
-    public void setXp(int X){
-        xp=X;
-    }
-    public void setAtk(int A){
-        atk=A;
-    }
-    public void setLevel(int L){
-        level=L;
+    public int getXp() {
+        return xp;
     }
 
-    public void Attaque(Personnage enemie){
-        System.out.println(name+"attaque"+enemie.name);
-        enemie.vie-=this.atk;
+    public void attaque(Personnage ennemi) {
+
+        ennemi.vie -= atk;
+
+        System.out.println(name + " attaque " + ennemi.name);
+        System.out.println("Degats : " + atk);
+
+        if (ennemi.vie <= 0) {
+            ennemi.vie = 0;
+            System.out.println(ennemi.name + " est mort !");
+            xp+=5;
+            gagnerXp(10);
+        }
     }
 
-    public void AffichageStatistique(){
-        System.out.println("Nom : "+name);
-        System.out.println("Poit de vie : "+vie);
-        System.out.println("Level : "+level);
-        System.out.println("Experiance : "+ xp);
-        System.out.println("point d'attaque : "+atk);
+    public void potion() {
+
+        vie += 10;
+
+        if (vie > 50)
+            vie = 50;
+
+        System.out.println(name + " utilise une potion (+10 vie)");
+    }
+
+    public void gagnerXp(int x) {
+
+        xp += x;
+
+        if (xp >= 20) {
+            level++;
+            xp = 0;
+            atk += 2;
+
+            System.out.println(name + " monte au niveau " + level);
+        }
+    }
+
+    public void afficher() {
+
+        System.out.println("Nom : " + name);
+        System.out.println("Vie : " + vie);
+        System.out.println("Level : " + level);
+        System.out.println("XP : " + xp);
+        System.out.println("ATK : " + atk);
+        System.out.println("-------------------");
     }
 }
