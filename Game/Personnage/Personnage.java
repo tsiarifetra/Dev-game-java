@@ -33,6 +33,14 @@ public class Personnage {
     }
 
     public void attaque(Personnage ennemi) {
+        if(this.vie<=0){
+            System.out.println(this.name + " est mort dont il ne peut pas attaque");
+            return;
+        }
+        if(ennemi.vie<=0){
+            System.out.println("l'ennemie est déjà mort");
+            return;
+        }
 
         ennemi.vie -= atk;
 
@@ -42,8 +50,7 @@ public class Personnage {
         if (ennemi.vie <= 0) {
             ennemi.vie = 0;
             System.out.println(ennemi.name + " est mort !");
-            xp+=5;
-            gagnerXp(10);
+            gagnerXp(5);
         }
     }
 
